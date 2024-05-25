@@ -1,0 +1,27 @@
+#Rebuild containers
+docker compose pull
+docker compose down
+docker-compose up --force-recreate --build -d
+
+#Confirm containers are running
+docker ps 
+
+#Copy configuration files to the container
+docker cp ./grafana.ini loki-grafana-1:/etc/grafana/grafana.ini
+docker compose restart
+
+#General tips:
+#FOR QUERYING PROMETHEUS DATA SOURCE USE THE DOCKER IP 172.X.X.X
+
+#Remove network adapters
+docker network prune
+
+
+
+#Error handling
+# For:
+# bin/prometheus exec error
+# The container is built for the wrong architecture
+
+#Example alert:
+count_over_time({filename="/var/log/auth.log"} |= `session opened` [1m])

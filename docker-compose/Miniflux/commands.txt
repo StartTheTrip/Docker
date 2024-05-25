@@ -1,0 +1,7 @@
+Remember that you still need to run the database migrations and create the first user:
+
+# Run database migrations
+docker compose exec miniflux /usr/bin/miniflux -migrate
+
+# Create the first user
+docker compose exec miniflux /usr/bin/miniflux -create-admin
