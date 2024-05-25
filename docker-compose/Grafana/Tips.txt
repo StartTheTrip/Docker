@@ -16,8 +16,6 @@ docker compose restart
 #Remove network adapters
 docker network prune
 
-
-
 #Error handling
 # For:
 # bin/prometheus exec error
